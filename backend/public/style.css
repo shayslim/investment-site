@@ -1,14 +1,20 @@
 body {
   font-family: Arial, sans-serif;
   margin: 30px;
-  background-color: #f4f4f4;
-}
-
-h1, h2 {
+  background-color: #f2f2f2;
   color: #333;
 }
 
-input, select, button {
-  margin: 10px;
+h1 {
+  color: #2c3e50;
+}
+
+.form {
+  margin-bottom: 20px;
+}
+
+input, select {
+  margin: 5px;
   padding: 8px;
+  font-size: 1em;
 }

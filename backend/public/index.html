@@ -4,31 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Crypto Investment Tracker</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 600px;
-      margin: 40px auto;
-      padding: 20px;
-      border: 1px solid #ccc;
-    }
-    h1, h2 {
-      color: #333;
-    }
-    input, select, button {
-      padding: 8px;
-      margin-top: 10px;
-      display: block;
-      width: 100%;
-    }
-    ul {
-      margin-top: 20px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
   <h1>Crypto Investment Tracker</h1>
-  <div>
+
+  <div class="form">
     <label for="coin">Select Coin:</label>
     <select id="coin">
       <option value="bitcoin">Bitcoin</option>
@@ -37,47 +18,13 @@
     </select>
 
     <label for="amount">Amount (USD):</label>
-    <input type="number" id="amount" />
+    <input type="number" id="amount" placeholder="e.g. 500" />
     <button onclick="invest()">Invest</button>
   </div>
 
   <h2>Current Investments</h2>
   <ul id="investment-list"></ul>
 
-  <script>
-    const BASE_URL = 'https://<YOUR_RENDER_URL>'; // Replace with your actual backend URL
-
-    async function invest() {
-      const coin = document.getElementById('coin').value;
-      const amount = parseFloat(document.getElementById('amount').value);
-
-      const priceRes = await fetch(`${BASE_URL}/api/price/${coin}`);
-      const priceData = await priceRes.json();
-      const price = priceData[coin].usd;
-
-      await fetch(`${BASE_URL}/api/invest`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ coin, amount, priceAtInvestment: price })
-      });
-
-      loadInvestments();
-    }
-
-    async function loadInvestments() {
-      const res = await fetch(`${BASE_URL}/api/investments`);
-      const data = await res.json();
-      const list = document.getElementById('investment-list');
-      list.innerHTML = '';
-
-      data.forEach(inv => {
-        const li = document.createElement('li');
-        li.innerText = inv.coin + ': $' + inv.amount + ' invested at $' + inv.priceAtInvestment;
-        list.appendChild(li);
-      });
-    }
-
-    window.onload = loadInvestments;
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
