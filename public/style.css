@@ -1,127 +1,127 @@
-/* Base Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Global Styles */
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #0f0f0f;
-  color: #fff;
-  line-height: 1.6;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #0f172a;
+  color: #f8fafc;
 }
 
-/* Price Ticker */
+/* 🔄 Price Ticker */
 .price-ticker {
-  background: #1c1c1c;
+  background: #111;
   color: #0f0;
   padding: 10px;
-  font-weight: bold;
   text-align: center;
-  overflow: hidden;
-  white-space: nowrap;
+  font-weight: bold;
+  font-size: 0.95rem;
 }
 
-/* Hero Section */
+/* 🧲 Hero Section */
 .hero {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  padding: 100px 20px;
   text-align: center;
-  padding: 60px 20px;
-  background: linear-gradient(145deg, #111, #1f1f1f);
 }
 
 .hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+  font-size: 3rem;
+  margin-bottom: 1rem;
 }
 
 .hero p {
   font-size: 1.2rem;
-  margin-bottom: 20px;
+  margin-bottom: 1.5rem;
+  color: #cbd5e1;
 }
 
 .cta {
-  background: #0f0;
-  color: #000;
-  padding: 10px 25px;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
   display: inline-block;
+  margin-top: 1rem;
+  background: #0ea5e9;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
 }
 
-/* Section Base */
+.cta:hover {
+  background: #0284c7;
+}
+
+/* 🧱 Section Styling */
 section {
-  padding: 50px 20px;
+  padding: 60px 20px;
   max-width: 1000px;
   margin: auto;
 }
 
-/* Features Grid */
+/* 📦 Feature Grid */
 .features-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
 }
 
 .features-grid div {
-  flex: 1;
-  min-width: 250px;
-  background: #1f1f1f;
+  background-color: #1e293b;
   padding: 20px;
-  border-radius: 10px;
-  text-align: left;
+  border-radius: 8px;
+  text-align: center;
 }
 
-/* Forms */
+/* 🔘 Forms */
 input,
 select,
 textarea {
   display: block;
-  width: 100%;
-  max-width: 400px;
   margin: 10px 0;
   padding: 10px;
-  background: #222;
-  color: #fff;
-  border: 1px solid #333;
+  width: 100%;
   border-radius: 5px;
+  border: none;
+  background: #1e293b;
+  color: #f8fafc;
 }
 
 textarea {
-  resize: vertical;
   min-height: 100px;
 }
 
 button {
+  background: #0ea5e9;
+  color: white;
   padding: 10px 20px;
-  background: #0f0;
-  color: #000;
   border: none;
   border-radius: 5px;
-  font-weight: bold;
   cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
 }
 
-/* List Styling */
-ul {
+button:hover {
+  background: #0284c7;
+}
+
+/* 📉 Investment List */
+ul#investment-list {
   list-style: none;
   padding: 0;
 }
 
-ul li {
-  background: #1a1a1a;
-  margin: 6px 0;
-  padding: 10px;
+ul#investment-list li {
+  background: #1e293b;
+  margin: 10px 0;
+  padding: 12px;
   border-radius: 5px;
 }
 
-/* Footer */
+/* 🧾 Footer */
 footer {
   text-align: center;
+  background: #1e293b;
   padding: 20px;
-  background: #1c1c1c;
-  color: #888;
+  color: #94a3b8;
+  font-size: 0.9rem;
 }
