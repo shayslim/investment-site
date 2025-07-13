@@ -2,87 +2,106 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ChainAssets – Smart Crypto Investing</title>
-
-  <!-- Styles -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChainAsset | Smart Crypto Investments</title>
   <link rel="stylesheet" href="style.css" />
-
-  <!-- AOS Animation Library -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
-
-  <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
-  <!-- Hero -->
-  <header class="hero" data-aos="fade-down">
-    <h1>Grow Your Crypto Portfolio With Confidence</h1>
-    <p>Secure, Simple, and Smart investing in top cryptocurrencies.</p>
-    <a href="#invest" class="btn">Start Investing</a>
+  <!-- Crypto Price Ticker -->
+  <div class="price-ticker" id="price-ticker">Loading prices...</div>
+
+  <!-- Hero Section -->
+  <header class="hero" data-aos="fade-up">
+    <h1>Grow Your Wealth with ChainAsset</h1>
+    <p>Secure, fast, and intelligent crypto investment platform.</p>
+    <a href="#invest" class="cta">Start Investing</a>
   </header>
 
-  <!-- Live Chart -->
-  <section class="chart-section" data-aos="fade-up">
-    <canvas id="liveChart"></canvas>
-  </section>
-
-  <!-- Features -->
-  <section id="features" data-aos="fade-right">
-    <h2>Features</h2>
+  <!-- Features Section -->
+  <section id="features" data-aos="fade-up">
+    <h2>Why Choose ChainAsset?</h2>
     <div class="features-grid">
-      <div>Real-time Prices</div>
-      <div>Secure Backend</div>
-      <div>Fast Deployment</div>
+      <div>
+        <h3>Real-time Tracking</h3>
+        <p>Monitor your investments and crypto prices in real-time with precision.</p>
+      </div>
+      <div>
+        <h3>Fast & Secure</h3>
+        <p>Backed by secure protocols and blazing fast performance.</p>
+      </div>
+      <div>
+        <h3>Smart Insights</h3>
+        <p>Receive smart analysis to guide your crypto journey effectively.</p>
+      </div>
     </div>
   </section>
 
-  <!-- Investment -->
+  <!-- Investment Section -->
   <section id="invest" data-aos="zoom-in">
-    <h2>Invest Now</h2>
-    <div class="form-wrap">
-      <select id="coin">
-        <option value="bitcoin">Bitcoin</option>
-        <option value="ethereum">Ethereum</option>
-        <option value="solana">Solana</option>
-        <option value="xrp">XRP</option>
-        <option value="tether">Tether</option>
-        <option value="binancecoin">BNB</option>
-        <option value="dogecoin">Dogecoin</option>
-        <option value="tron">Tron</option>
-        <option value="cardano">Cardano</option>
-        <option value="shiba-inu">SHIBA</option>
-        <option value="chainlink">Chainlink</option>
-      </select>
+    <h2>Make an Investment</h2>
 
-      <input type="number" id="amount" placeholder="Amount (USD)" />
-      <button onclick="invest()">Invest</button>
-    </div>
+    <label for="coin">Select Coin:</label>
+    <select id="coin">
+      <option value="bitcoin">Bitcoin</option>
+      <option value="ethereum">Ethereum</option>
+      <option value="bnb">BNB</option>
+      <option value="xrp">XRP</option>
+      <option value="tether">Tether</option>
+      <option value="dogecoin">Dogecoin</option>
+      <option value="cardano">Cardano</option>
+      <option value="tron">Tron</option>
+      <option value="shiba">Shiba Inu</option>
+      <option value="chainlink">Chainlink</option>
+    </select>
 
-    <ul id="investment-list" class="investment-list"></ul>
+    <label for="amount">Amount (USD):</label>
+    <input type="number" id="amount" placeholder="Enter USD amount" />
+
+    <button onclick="invest()">Invest</button>
+
+    <h3>Current Investments</h3>
+    <ul id="investment-list"></ul>
   </section>
 
-  <!-- Testimonials -->
-  <section id="testimonials" data-aos="fade-left">
-    <h2>Testimonials</h2>
-    <div class="testimonial">“ChainAssets made investing easy!” — Jane D.</div>
-    <div class="testimonial">“Transparent and secure.” — John S.</div>
+  <!-- Roadmap Section -->
+  <section id="roadmap" data-aos="fade-up">
+    <h2>Platform Roadmap</h2>
+    <ul>
+      <li><strong>Q1 2025:</strong> Launch of ChainAsset Beta</li>
+      <li><strong>Q2 2025:</strong> Integration with major wallets</li>
+      <li><strong>Q3 2025:</strong> Advanced analytics & portfolio tracking</li>
+      <li><strong>Q4 2025:</strong> Mobile app release and staking features</li>
+    </ul>
   </section>
 
-  <!-- Contact -->
+  <!-- Testimonials Section -->
+  <section id="testimonials" data-aos="fade-up">
+    <h2>What Our Users Say</h2>
+    <blockquote>"ChainAsset transformed how I invest in crypto. It's intuitive and very reliable!" – Sophia</blockquote>
+    <blockquote>"Real-time data and smart features helped me grow my portfolio." – James</blockquote>
+  </section>
+
+  <!-- Contact Section -->
   <section id="contact" data-aos="fade-up">
     <h2>Contact Us</h2>
-    <form action="https://formspree.io/f/yourFormID" method="POST">
-      <input type="email" name="email" placeholder="Your email" required />
-      <textarea name="message" placeholder="Your message" required></textarea>
+    <form action="https://formspree.io/f/mnqeqvgy" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" required></textarea>
       <button type="submit">Send</button>
     </form>
   </section>
 
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 ChainAsset. All rights reserved.</p>
+  </footer>
+
   <!-- Scripts -->
+  <script src="script.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>AOS.init();</script>
-  <script src="script.js"></script>
 </body>
 </html>
