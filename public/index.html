@@ -3,63 +3,60 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ChainAsset - Crypto Investment</title>
+  <title>ChainAsset | Crypto Investment</title>
+
+  <!-- AOS Animation Styles -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="hero">
-    <nav class="navbar">
-      <div class="logo">ChainAsset</div>
-      <ul class="nav-links">
-        <li><a href="#features">Features</a></li>
-        <li><a href="#invest">Invest</a></li>
-        <li><a href="#roadmap">Roadmap</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-    <div class="hero-content">
-      <h1>Invest Smarter in Crypto</h1>
-      <p>Track, analyze, and grow your crypto investments with ease.</p>
-      <a href="#invest" class="cta">Start Investing</a>
-    </div>
-  </header>
-
-  <section id="features" class="section">
-    <h2>Platform Features</h2>
-    <div class="features-grid">
-      <div class="feature">Live Crypto Prices</div>
-      <div class="feature">Secure Investment Tracking</div>
-      <div class="feature">Real-time Portfolio Updates</div>
-    </div>
+  <!-- ✅ HERO SECTION -->
+  <section id="hero" class="section" data-aos="fade-up">
+    <h1>Welcome to ChainAsset</h1>
+    <p>Track your crypto investments in real time.</p>
   </section>
 
-  <section id="invest" class="section">
+  <!-- ✅ INVESTMENT FORM -->
+  <section id="invest" class="section" data-aos="fade-up">
     <h2>Make an Investment</h2>
-    <div class="form-container">
-      <select id="coin">
-        <option value="bitcoin">Bitcoin</option>
-        <option value="ethereum">Ethereum</option>
-        <option value="solana">Solana</option>
-      </select>
-      <input type="number" id="amount" placeholder="Enter amount in USD" />
-      <button onclick="invest()">Invest</button>
-      <ul id="investment-list"></ul>
+    <select id="coin">
+      <option value="bitcoin">Bitcoin</option>
+      <option value="ethereum">Ethereum</option>
+      <option value="solana">Solana</option>
+    </select>
+    <input type="number" id="amount" placeholder="Amount in USD" />
+    <button onclick="invest()">Invest</button>
+    <ul id="investment-list"></ul>
+  </section>
+
+  <!-- ✅ TESTIMONIALS -->
+  <section id="testimonials" class="section" data-aos="fade-up">
+    <h2>What Our Users Say</h2>
+    <div class="testimonial-slider">
+      <div class="testimonial active">"Amazing platform!" – Grace</div>
+      <div class="testimonial">"User-friendly interface!" – Emeka</div>
+      <div class="testimonial">"Helps me stay on top of my investments!" – Ada</div>
     </div>
   </section>
 
-  <section id="roadmap" class="section">
-    <h2>Roadmap</h2>
-    <p>Coming soon: advanced analytics, wallet integration, staking rewards.</p>
-  </section>
-
-  <section id="contact" class="section">
+  <!-- ✅ CONTACT FORM -->
+  <section id="contact" class="section" data-aos="fade-up">
     <h2>Contact Us</h2>
-    <p>Email: support@chainasset.com</p>
+    <form action="https://formspree.io/f/mwpqekgz" method="POST" class="form-container">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
   </section>
 
-  <footer>
-    <p>© 2025 ChainAsset. All rights reserved.</p>
-  </footer>
+  <!-- ✅ AOS + Custom Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 
   <script src="script.js"></script>
 </body>
