@@ -1,146 +1,79 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #0e0e0e;
-  color: #ffffff;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #0d1117;
+  color: #f0f6fc;
 }
 
-header {
-  background: #111;
-  padding: 20px 0;
+a {
+  color: #58a6ff;
+  text-decoration: none;
 }
 
-nav {
+.hero {
+  background: linear-gradient(180deg, #161b22 0%, #0d1117 100%);
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1100px;
-  margin: auto;
-  padding: 0 20px;
+  padding: 1rem 2rem;
+  background-color: #161b22;
 }
 
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #00b3ff;
 }
 
 .nav-links {
   display: flex;
-  gap: 20px;
   list-style: none;
+  gap: 1.5rem;
 }
 
-.nav-links a {
-  text-decoration: none;
-  color: #fff;
-  font-weight: 500;
-}
-
-.hero {
+.section {
+  padding: 4rem 2rem;
   text-align: center;
-  padding: 100px 20px;
-  background: linear-gradient(135deg, #141414, #1c1c1c);
 }
 
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-.hero p {
-  color: #ccc;
-  margin-bottom: 1.5rem;
-}
-
-.cta-btn {
-  background: #00b3ff;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 4px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.container {
-  max-width: 1000px;
-  margin: auto;
-  padding: 60px 20px;
-}
-
-.grid {
+.features-grid {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
 }
 
-.card {
-  background: #1f1f1f;
-  padding: 20px;
-  border-radius: 6px;
-  flex: 1;
-  min-width: 250px;
-  border: 1px solid #2c2c2c;
+.feature {
+  background: #21262d;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-top: 20px;
+.form-container {
+  margin-top: 1rem;
 }
 
 input, select, button {
-  padding: 12px;
-  border-radius: 4px;
+  padding: 0.7rem;
+  margin: 0.5rem;
   border: none;
+  border-radius: 4px;
 }
 
 button {
-  background: #00b3ff;
+  background-color: #238636;
   color: white;
-  font-weight: bold;
   cursor: pointer;
 }
 
-#investment-list {
-  list-style: none;
-  margin-top: 30px;
-}
-
-#investment-list li {
-  background: #1c1c1c;
-  margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 4px;
-}
-
-.roadmap li {
-  margin-bottom: 10px;
-}
-
-.testimonial-grid {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.testimonial {
-  background: #1c1c1c;
-  padding: 20px;
-  border-radius: 6px;
-  flex: 1;
-  min-width: 250px;
-}
-
 footer {
-  background: #111;
-  padding: 20px;
+  background-color: #161b22;
+  padding: 1rem;
   text-align: center;
-  color: #aaa;
+  color: #8b949e;
 }

@@ -3,99 +3,64 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ChainAsset – Smart Crypto Investment</title>
+  <title>ChainAsset - Crypto Investment</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <header>
-    <nav>
+  <header class="hero">
+    <nav class="navbar">
       <div class="logo">ChainAsset</div>
       <ul class="nav-links">
         <li><a href="#features">Features</a></li>
         <li><a href="#invest">Invest</a></li>
         <li><a href="#roadmap">Roadmap</a></li>
-        <li><a href="#testimonials">Testimonials</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
-    <div class="hero" data-aos="fade-up">
-      <h1>Smart Crypto Investment Platform</h1>
-      <p>Invest in top cryptocurrencies, track growth, and stay ahead of the market.</p>
-      <a href="#invest" class="cta-btn">Get Started</a>
+    <div class="hero-content">
+      <h1>Invest Smarter in Crypto</h1>
+      <p>Track, analyze, and grow your crypto investments with ease.</p>
+      <a href="#invest" class="cta">Start Investing</a>
     </div>
   </header>
 
-  <section id="features" class="container" data-aos="fade-up">
+  <section id="features" class="section">
     <h2>Platform Features</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Real-Time Data</h3>
-        <p>Live crypto prices with fast API response.</p>
-      </div>
-      <div class="card">
-        <h3>Secure & Transparent</h3>
-        <p>Simple architecture backed by a reliable backend.</p>
-      </div>
-      <div class="card">
-        <h3>Responsive Design</h3>
-        <p>Optimized for mobile and desktop screens.</p>
-      </div>
+    <div class="features-grid">
+      <div class="feature">Live Crypto Prices</div>
+      <div class="feature">Secure Investment Tracking</div>
+      <div class="feature">Real-time Portfolio Updates</div>
     </div>
   </section>
 
-  <section id="invest" class="container" data-aos="fade-up">
+  <section id="invest" class="section">
     <h2>Make an Investment</h2>
-    <div class="form-group">
-      <label for="coin">Select Coin</label>
+    <div class="form-container">
       <select id="coin">
         <option value="bitcoin">Bitcoin</option>
         <option value="ethereum">Ethereum</option>
         <option value="solana">Solana</option>
       </select>
-
-      <label for="amount">Amount (USD)</label>
-      <input type="number" id="amount" placeholder="Enter amount" />
+      <input type="number" id="amount" placeholder="Enter amount in USD" />
       <button onclick="invest()">Invest</button>
-    </div>
-    <ul id="investment-list"></ul>
-  </section>
-
-  <section id="roadmap" class="container" data-aos="fade-up">
-    <h2>Project Roadmap</h2>
-    <ul class="roadmap">
-      <li><strong>Q3 2025</strong> – MVP Launch & Live Deployment</li>
-      <li><strong>Q4 2025</strong> – Wallet Integration & Charts</li>
-      <li><strong>Q1 2026</strong> – Referral Program & UI Redesign</li>
-    </ul>
-  </section>
-
-  <section id="testimonials" class="container" data-aos="fade-up">
-    <h2>What Users Say</h2>
-    <div class="testimonial-grid">
-      <div class="testimonial">
-        <p>"ChainAsset makes it simple to track crypto without stress. Love it!"</p>
-        <span>- Ada, Lagos</span>
-      </div>
-      <div class="testimonial">
-        <p>"Easy to use, responsive and direct to the point."</p>
-        <span>- Kelvin, Abuja</span>
-      </div>
+      <ul id="investment-list"></ul>
     </div>
   </section>
 
-  <section id="contact" class="container" data-aos="fade-up">
+  <section id="roadmap" class="section">
+    <h2>Roadmap</h2>
+    <p>Coming soon: advanced analytics, wallet integration, staking rewards.</p>
+  </section>
+
+  <section id="contact" class="section">
     <h2>Contact Us</h2>
-    <p>Email: <a href="mailto:support@chainasset.netlify.app">support@chainasset.netlify.app</a></p>
+    <p>Email: support@chainasset.com</p>
   </section>
 
   <footer>
-    <p>&copy; 2025 ChainAsset. All rights reserved.</p>
+    <p>© 2025 ChainAsset. All rights reserved.</p>
   </footer>
 
   <script src="script.js"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init();</script>
 </body>
 </html>
