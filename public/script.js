@@ -1,125 +1,122 @@
 const BASE_URL = 'https://investement-backend.onrender.com';
 
-
-
-async function fetchPrices() {
-
-  const coins = ['bitcoin', 'ethereum', 'solana', 'ripple', 'tether', 'binancecoin', 'dogecoin', 'tron', 'cardano', 'shiba-inu', 'chainlink'];
-
-  try {
-
-    const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${coins.join(',')}&vs_currencies=usd`);
-
-    const data = await res.json();
-
-    const ticker = document.getElementById('price-ticker');
-
-    ticker.innerHTML = coins.map(coin => {
-
-      const price = data[coin]?.usd ?? 'N/A';
-
-      return `<span>${coin.toUpperCase()}: $${price}</span>`;
-
-    }).join(' | ');
-
-  } catch (err) {
-
-    console.error('Error loading prices:', err);
-
-    document.getElementById('price-ticker').innerText = 'Error loading prices';
-
+// Live Chart
+const ctx = document.getElementById('liveChart').getContext('2d');
+let chart = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: [],
+    datasets: [{
+      label: 'BTC Price',
+      data: [],
+      borderColor: '#0ff',
+      fill: false,
+      tension: 0.3
+    }]
+  },
+  options: {
+    scales: {
+      x: { display: false },
+      y: {
+        ticks: { color: '#fff' },
+        beginAtZero: false
+      }
+    },
+    plugins: {
+      legend: {
+        labels: { color: '#fff' }
+      }
+    }
   }
+});
 
+async function updateChart() {
+  try {
+    const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
+    const price = (await res.json()).bitcoin.usd;
+    const time = new Date().toLocaleTimeString();
+
+    chart.data.labels.push(time);
+    chart.data.datasets[0].data.push(price);
+
+    if (chart.data.labels.length > 20) {
+      chart.data.labels.shift();
+      chart.data.datasets[0].data.shift();
+    }
+
+    chart.update();
+  } catch (err) {
+    console.error('Chart update failed:', err);
+  }
 }
 
-
-
+// Investments
 async function invest() {
-
   const coin = document.getElementById('coin').value;
-
   const amount = parseFloat(document.getElementById('amount').value);
 
   if (!amount || amount <= 0) {
-
-    alert('Please enter a valid amount.');
-
+    alert('Enter a valid amount');
     return;
-
   }
 
-
-
   try {
-
-    const priceRes = await fetch(`${BASE_URL}/api/price/${coin}`);
-
-    const priceData = await priceRes.json();
-
-    const price = priceData[coin].usd;
-
-
+    const res = await fetch(`${BASE_URL}/api/price/${coin}`);
+    const data = await res.json();
+    const price = data[coin].usd;
 
     await fetch(`${BASE_URL}/api/invest`, {
-
       method: 'POST',
-
       headers: { 'Content-Type': 'application/json' },
-
       body: JSON.stringify({ coin, amount, priceAtInvestment: price })
-
     });
-
-
 
     loadInvestments();
-
   } catch (err) {
-
-    alert('Error making investment. Please try again.');
-
+    alert('Investment failed. Please try again.');
+    console.error(err);
   }
-
 }
-
-
 
 async function loadInvestments() {
-
   try {
-
     const res = await fetch(`${BASE_URL}/api/investments`);
-
     const data = await res.json();
+    const ul = document.getElementById('investment-list');
+    ul.innerHTML = '';
 
-    const list = document.getElementById('investment-list');
-
-    list.innerHTML = '';
-
-    data.forEach(inv => {
-
+    data.forEach(i => {
       const li = document.createElement('li');
-
-      li.innerText = `${inv.coin.toUpperCase()}: $${inv.amount} @ $${inv.priceAtInvestment} on ${new Date(inv.date).toLocaleString()}`;
-
-      list.appendChild(li);
-
+      li.innerText = `${i.coin.toUpperCase()}: $${i.amount} @ $${i.priceAtInvestment} on ${new Date(i.date).toLocaleString()}`;
+      ul.appendChild(li);
     });
-
   } catch (err) {
-
-    console.log('Error loading investments', err);
-
+    console.error('Failed to load investments:', err);
   }
-
 }
 
+// Price ticker
+async function fetchPrices() {
+  const coins = ['bitcoin', 'ethereum', 'solana', 'ripple', 'tether', 'binancecoin', 'dogecoin', 'tron', 'cardano', 'shiba-inu', 'chainlink'];
 
+  try {
+    const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${coins.join(',')}&vs_currencies=usd`);
+    const data = await res.json();
 
+    document.getElementById('price-ticker').innerText =
+      coins.map(c => `${c.replace('-', ' ').toUpperCase()}: $${data[c]?.usd ?? 'N/A'}`).join(' | ');
+  } catch (err) {
+    console.error('Failed to fetch prices:', err);
+    document.getElementById('price-ticker').innerText = 'Unable to load prices.';
+  }
+}
+
+// Initialize
 window.onload = () => {
-
-  fetchPrices();
-
+  AOS.init();
   loadInvestments();
-
+  fetchPrices();
+  updateChart();
+  setInterval(updateChart, 60000); // Update chart every 60 seconds
+  setInterval(fetchPrices, 60000); // Optional: update ticker too
 };
