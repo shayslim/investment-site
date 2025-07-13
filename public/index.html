@@ -1,68 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>ChainAsset | Crypto Investment Platform</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ChainAsset - Crypto Investment Platform</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- Hero Section -->
-  <section class="hero">
+  <!-- ✅ Live Crypto Ticker -->
+  <div class="crypto-ticker">
+    <span id="btc-price">BTC: Loading...</span>
+    <span id="eth-price">ETH: Loading...</span>
+    <span id="sol-price">SOL: Loading...</span>
+    <span id="xrp-price">XRP: Loading...</span>
+    <span id="usdt-price">USDT: Loading...</span>
+    <span id="bnb-price">BNB: Loading...</span>
+    <span id="doge-price">DOGE: Loading...</span>
+    <span id="trx-price">TRX: Loading...</span>
+    <span id="ada-price">ADA: Loading...</span>
+    <span id="shib-price">SHIB: Loading...</span>
+    <span id="link-price">LINK: Loading...</span>
+  </div>
+
+  <!-- ✅ Main Content -->
+  <main>
     <h1>Welcome to ChainAsset</h1>
-    <p>Track your crypto investments in real time</p>
-    <a href="#invest-section" class="cta">Get Started</a>
-  </section>
 
-  <!-- Investment Form Section -->
-  <section id="invest-section" class="investment-section">
-    <h2>Make an Investment</h2>
+    <div class="form-section">
+      <label for="coin">Select Coin:</label>
+      <select id="coin">
+        <option value="bitcoin">Bitcoin</option>
+        <option value="ethereum">Ethereum</option>
+        <option value="solana">Solana</option>
+      </select>
 
-    <label for="coin">Select Coin:</label>
-    <select id="coin">
-      <option value="bitcoin">Bitcoin</option>
-      <option value="ethereum">Ethereum</option>
-      <option value="solana">Solana</option>
-    </select>
-
-    <label for="amount">Amount (USD):</label>
-    <input type="number" id="amount" placeholder="Enter amount" />
-
-    <button onclick="invest()">Invest</button>
-
-    <h3>Current Investments</h3>
-    <ul id="investment-list"></ul>
-  </section>
-
-  <!-- Features Section (Optional) -->
-  <section class="features">
-    <h2>Platform Features</h2>
-    <div class="feature-grid">
-      <div class="feature-box">
-        <h3>Real-Time Pricing</h3>
-        <p>Live crypto prices fetched from trusted APIs.</p>
-      </div>
-      <div class="feature-box">
-        <h3>Secure Tracking</h3>
-        <p>All your investment records are securely stored.</p>
-      </div>
-      <div class="feature-box">
-        <h3>Multi-Coin Support</h3>
-        <p>Invest in Bitcoin, Ethereum, Solana, and more.</p>
-      </div>
+      <label for="amount">Amount (USD):</label>
+      <input type="number" id="amount" placeholder="Enter amount" />
+      <button onclick="invest()">Invest</button>
     </div>
-  </section>
 
-  <!-- Contact Section -->
-  <section class="contact">
-    <h2>Need Help?</h2>
-    <p>Email: support@chainasset.com</p>
-  </section>
+    <h2>Your Investments</h2>
+    <ul id="investment-list"></ul>
+  </main>
 
-  <!-- JavaScript Logic -->
+  <!-- ✅ Script -->
   <script>
     const BASE_URL = 'https://investement-backend.onrender.com';
+
+    async function updateCryptoPrices() {
+      try {
+        const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,ripple,tether,binancecoin,dogecoin,tron,cardano,shiba-inu,chainlink&vs_currencies=usd');
+        const data = await res.json();
+
+        document.getElementById('btc-price').innerText = `BTC: $${data.bitcoin.usd}`;
+        document.getElementById('eth-price').innerText = `ETH: $${data.ethereum.usd}`;
+        document.getElementById('sol-price').innerText = `SOL: $${data.solana.usd}`;
+        document.getElementById('xrp-price').innerText = `XRP: $${data.ripple.usd}`;
+        document.getElementById('usdt-price').innerText = `USDT: $${data.tether.usd}`;
+        document.getElementById('bnb-price').innerText = `BNB: $${data.binancecoin.usd}`;
+        document.getElementById('doge-price').innerText = `DOGE: $${data.dogecoin.usd}`;
+        document.getElementById('trx-price').innerText = `TRX: $${data.tron.usd}`;
+        document.getElementById('ada-price').innerText = `ADA: $${data.cardano.usd}`;
+        document.getElementById('shib-price').innerText = `SHIB: $${data['shiba-inu'].usd}`;
+        document.getElementById('link-price').innerText = `LINK: $${data.chainlink.usd}`;
+      } catch (err) {
+        console.error('Error fetching crypto prices:', err);
+      }
+    }
 
     async function invest() {
       const coin = document.getElementById('coin').value;
@@ -86,6 +91,7 @@
         loadInvestments();
       } catch (err) {
         alert('Error making investment. Please try again.');
+        console.error(err);
       }
     }
 
@@ -106,8 +112,12 @@
       }
     }
 
-    window.onload = loadInvestments;
+    // Load data on page load and update prices every 60s
+    window.onload = () => {
+      updateCryptoPrices();
+      loadInvestments();
+      setInterval(updateCryptoPrices, 60000);
+    };
   </script>
-
 </body>
 </html>
