@@ -148,4 +148,162 @@ body {
     flex-direction: column;
     align-items: center;
   }
+}/* Global styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #0d1117;
+  color: #f0f6fc;
+  line-height: 1.6;
+  padding: 0 20px;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(to right, #141e30, #243b55);
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #c9d1d9;
+}
+
+.cta {
+  display: inline-block;
+  background-color: #58a6ff;
+  color: white;
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.cta:hover {
+  background-color: #1f6feb;
+}
+
+/* Investment Section */
+.investment-section {
+  margin: 50px 0;
+  padding: 20px;
+  background-color: #161b22;
+  border-radius: 8px;
+}
+
+.investment-section h2,
+.investment-section h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #f0f6fc;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+input,
+select,
+button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: none;
+  font-size: 1rem;
+}
+
+button {
+  background-color: #238636;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #2ea043;
+}
+
+/* Investment List */
+#investment-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+#investment-list li {
+  background: #0d1117;
+  padding: 12px;
+  margin-bottom: 10px;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  color: #c9d1d9;
+}
+
+/* Features Section */
+.features {
+  margin: 60px 0;
+  text-align: center;
+}
+
+.features h2 {
+  margin-bottom: 30px;
+}
+
+.feature-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.feature-box {
+  background-color: #21262d;
+  padding: 20px;
+  border-radius: 6px;
+  width: 280px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.feature-box h3 {
+  margin-bottom: 10px;
+}
+
+/* Contact Section */
+.contact {
+  margin: 60px 0;
+  text-align: center;
+}
+
+.contact p {
+  color: #8b949e;
+  margin-top: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .feature-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
 }
