@@ -3,27 +3,61 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Crypto Investment Tracker</title>
-  <link rel="stylesheet" href="style.css"/>
+  <title>ChainAsset - Crypto Investment</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <h1>Crypto Investment Tracker</h1>
+  <header class="hero">
+    <div class="container">
+      <h1>ChainAsset</h1>
+      <p>Invest Smart in Crypto. Track your growth in real time.</p>
+      <a href="#invest" class="cta-btn">Start Investing</a>
+    </div>
+  </header>
 
-  <div class="form">
-    <label for="coin">Select Coin:</label>
-    <select id="coin">
-      <option value="bitcoin">Bitcoin</option>
-      <option value="ethereum">Ethereum</option>
-      <option value="solana">Solana</option>
-    </select>
+  <section class="features container">
+    <h2>Why ChainAsset?</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Live Prices</h3>
+        <p>Real-time price fetching from trusted APIs.</p>
+      </div>
+      <div class="card">
+        <h3>Secure Storage</h3>
+        <p>Investments saved locally for peace of mind.</p>
+      </div>
+      <div class="card">
+        <h3>Clean & Fast UI</h3>
+        <p>Inspired by top investment platforms.</p>
+      </div>
+    </div>
+  </section>
 
-    <label for="amount">Amount (USD):</label>
-    <input type="number" id="amount" placeholder="e.g. 500" />
-    <button onclick="invest()">Invest</button>
-  </div>
+  <section class="investment container" id="invest">
+    <h2>Make an Investment</h2>
+    <div class="form-group">
+      <label for="coin">Select Coin</label>
+      <select id="coin">
+        <option value="bitcoin">Bitcoin</option>
+        <option value="ethereum">Ethereum</option>
+        <option value="solana">Solana</option>
+      </select>
 
-  <h2>Current Investments</h2>
-  <ul id="investment-list"></ul>
+      <label for="amount">Amount (USD)</label>
+      <input type="number" id="amount" placeholder="Enter amount in USD" />
+      <button onclick="invest()">Invest</button>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2>Investment History</h2>
+    <ul id="investment-list"></ul>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 ChainAsset. Built for crypto investors.</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
