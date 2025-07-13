@@ -14,7 +14,7 @@ async function invest() {
     const priceData = await priceRes.json();
     const price = priceData[coin].usd;
 
-    await fetch(BASE_URL + '/api/invest', {
+    await fetch('${BASE_URL}/api/invest', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ coin, amount, priceAtInvestment: price })
