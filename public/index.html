@@ -133,3 +133,108 @@
   </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ChainAsset - Crypto Investment</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Secure & Smart Crypto Investments</h1>
+      <p>Grow your wealth by investing in top cryptocurrencies like Bitcoin, Ethereum, BNB, XRP and more.</p>
+      <a href="#investment-form" class="cta-button">Start Investing</a>
+    </div>
+  </section>
+
+  <!-- Investment Form Section -->
+  <section id="investment-form">
+    <h2>Invest Now</h2>
+    <div class="form-wrapper">
+      <label for="coin">Select Coin:</label>
+      <select id="coin">
+        <option value="bitcoin">Bitcoin</option>
+        <option value="ethereum">Ethereum</option>
+        <option value="solana">Solana</option>
+        <option value="xrp">XRP</option>
+        <option value="tether">Tether</option>
+        <option value="binancecoin">BNB</option>
+        <option value="dogecoin">Dogecoin</option>
+        <option value="tron">Tron</option>
+        <option value="cardano">Cardano</option>
+        <option value="shiba-inu">SHIBA INU</option> <!-- fixed value -->
+        <option value="chainlink">Chainlink</option>
+      </select>
+
+      <label for="amount">Amount (USD):</label>
+      <input type="number" id="amount" placeholder="Enter amount" />
+      <button onclick="invest()">Invest</button>
+    </div>
+  </section>
+
+  <!-- Investment List -->
+  <section>
+    <h2>Current Investments</h2>
+    <ul id="investment-list"></ul>
+  </section>
+
+  <script>
+
+    async function invest() {
+      const coin = document.getElementById('coin').value;
+      const amount = parseFloat(document.getElementById('amount').value);
+
+      if (!amount || amount <= 0) {
+        alert('Please enter a valid amount.');
+        return;
+      }
+
+      try {
+        const priceRes = await fetch(`${BASE_URL}/api/price/${coin}`);
+        const priceData = await priceRes.json();
+        const price = priceData[coin]?.usd;
+
+        if (!price) {
+          alert('Error fetching price for selected coin.');
+          return;
+        }
+
+        await fetch(`${BASE_URL}/api/invest`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ coin, amount, priceAtInvestment: price })
+        });
+
+        loadInvestments();
+      } catch (err) {
+        alert('Error making investment. Please try again.');
+        console.error(err);
+      }
+    }
+
+    async function loadInvestments() {
+      try {
+        const res = await fetch(`${BASE_URL}/api/investments`);
+        const data = await res.json();
+        const list = document.getElementById('investment-list');
+        list.innerHTML = '';
+
+        data.forEach(inv => {
+          const li = document.createElement('li');
+          li.innerText = `${inv.coin.toUpperCase()}: $${inv.amount} @ $${inv.priceAtInvestment} on ${new Date(inv.date).toLocaleString()}`;
+          list.appendChild(li);
+        });
+      } catch (err) {
+        console.log('Error loading investments', err);
+      }
+    }
+
+    window.onload = loadInvestments;
+  </script>
+</body>
+</html>
