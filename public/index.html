@@ -3,176 +3,106 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ChainAsset - Crypto Investment</title>
+  <title>Chain Assets | Crypto Investment</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #0d0d0d;
-      color: white;
-    }
-    header {
-      background-color: #111;
-      padding: 15px;
-      text-align: center;
-      font-weight: bold;
-      font-size: 1.2rem;
-    }
-    .container {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 20px;
-      background-color: #1a1a1a;
-      border-radius: 8px;
-    }
-    label, select, input {
-      display: block;
-      margin: 10px 0;
-      font-size: 1rem;
-    }
-    select, input {
-      padding: 8px;
-      width: 100%;
-      border-radius: 4px;
-      border: none;
-    }
-    button {
-      margin-top: 15px;
-      padding: 10px 20px;
-      background-color: #00b894;
-      border: none;
-      color: white;
-      font-size: 1rem;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-    h2 {
-      margin-top: 40px;
-    }
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
-    li {
-      margin: 8px 0;
-      padding: 8px;
-      background-color: #333;
-      border-radius: 4px;
-    }
-  </style>
 </head>
 <body>
 
-  <!-- Crypto Price Ticker -->
-  <header id="crypto-ticker">
-    Loading prices...
+  <!-- Top Crypto Price Ticker -->
+  <div class="price-ticker" id="price-ticker">Loading prices...</div>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container nav">
+      <h1 class="logo">ChainAssets</h1>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#invest">Invest</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <div class="container">
-    <h1>ChainAsset Crypto Investment</h1>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h2>Invest Smarter with Crypto</h2>
+      <p>Secure. Fast. Transparent. Grow your crypto portfolio with confidence.</p>
+      <a href="#invest" class="btn">Get Started</a>
+    </div>
+  </section>
 
-    <label for="coin">Select Coin:</label>
-    <select id="coin">
-      <option value="bitcoin">Bitcoin</option>
-      <option value="ethereum">Ethereum</option>
-      <option value="xrp">XRP</option>
-      <option value="tether">Tether</option>
-      <option value="bnb">BNB</option>
-      <option value="dogecoin">Dogecoin</option>
-      <option value="tron">Tron</option>
-      <option value="cardano">Cardano</option>
-      <option value="shiba-inu">Shiba Inu</option>
-      <option value="chainlink">Chainlink</option>
-    </select>
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <div class="container">
+      <h2>Platform Features</h2>
+      <div class="features-grid">
+        <div class="feature-box">
+          <h3>Real-Time Pricing</h3>
+          <p>Stay up to date with live crypto prices.</p>
+        </div>
+        <div class="feature-box">
+          <h3>Secure Investments</h3>
+          <p>Bank-grade security to protect your assets.</p>
+        </div>
+        <div class="feature-box">
+          <h3>Instant Tracking</h3>
+          <p>Track your portfolio in real-time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <label for="amount">Amount (USD):</label>
-    <input type="number" id="amount" placeholder="Enter amount" />
+  <!-- Investment Section -->
+  <section class="invest" id="invest">
+    <div class="container">
+      <h2>Make an Investment</h2>
+      <div class="form-wrapper">
+        <label for="coin">Select Coin:</label>
+        <select id="coin">
+          <option value="bitcoin">Bitcoin</option>
+          <option value="ethereum">Ethereum</option>
+          <option value="solana">Solana</option>
+          <option value="ripple">XRP</option>
+          <option value="tether">Tether</option>
+          <option value="binancecoin">BNB</option>
+          <option value="dogecoin">Dogecoin</option>
+          <option value="tron">Tron</option>
+          <option value="cardano">Cardano</option>
+          <option value="shiba-inu">SHIBA</option>
+          <option value="chainlink">Chainlink</option>
+        </select>
 
-    <button onclick="invest()">Invest</button>
+        <label for="amount">Amount (USD):</label>
+        <input type="number" id="amount" placeholder="Enter amount in USD" />
 
-    <h2>Current Investments</h2>
-    <ul id="investment-list"></ul>
-  </div>
+        <button onclick="invest()">Invest</button>
+      </div>
 
-  <script>
-    const BASE_URL = 'https://investement-backend.onrender.com';
+      <h3>Investment History</h3>
+      <ul id="investment-list" class="investment-list"></ul>
+    </div>
+  </section>
 
-    async function invest() {
-      const coin = document.getElementById('coin').value;
-      const amount = parseFloat(document.getElementById('amount').value);
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p>Email: <a href="mailto:support@chainassets.com">support@chainassets.com</a></p>
+    </div>
+  </section>
 
-      if (!amount || amount <= 0) {
-        alert('Please enter a valid amount.');
-        return;
-      }
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 ChainAssets. All rights reserved.</p>
+    </div>
+  </footer>
 
-      try {
-        const priceRes = await fetch(`${BASE_URL}/api/price/${coin}`);
-        const priceData = await priceRes.json();
-        const price = priceData?.[coin]?.usd;
-
-        if (!price) {
-          alert('Could not fetch current price.');
-          return;
-        }
-
-        await fetch(`${BASE_URL}/api/invest`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ coin, amount, priceAtInvestment: price })
-        });
-
-        loadInvestments();
-      } catch (err) {
-        alert('Error making investment. Please try again.');
-        console.error(err);
-      }
-    }
-
-    async function loadInvestments() {
-      try {
-        const res = await fetch(`${BASE_URL}/api/investments`);
-        const data = await res.json();
-        const list = document.getElementById('investment-list');
-        list.innerHTML = '';
-
-        data.forEach(inv => {
-          const li = document.createElement('li');
-          li.innerText = `${inv.coin.toUpperCase()}: $${Number(inv.amount).toFixed(2)} @ $${Number(inv.priceAtInvestment).toFixed(2)} on ${new Date(inv.date).toLocaleString()}`;
-          list.appendChild(li);
-        });
-      } catch (err) {
-        console.log('Error loading investments', err);
-      }
-    }
-
-    async function loadPrices() {
-      const ticker = document.getElementById('crypto-ticker');
-      const coins = ['bitcoin', 'ethereum', 'xrp', 'tether', 'bnb', 'dogecoin', 'tron', 'cardano', 'shiba-inu', 'chainlink'];
-
-      try {
-        const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${coins.join(',')}&vs_currencies=usd`);
-        const data = await res.json();
-
-        let html = coins.map(coin => {
-          const price = data[coin]?.usd;
-          const name = coin.replace('-', ' ').toUpperCase();
-          return `${name}: $${price?.toFixed(2) || 'N/A'}`;
-        }).join(' | ');
-
-        ticker.innerText = html;
-      } catch (err) {
-        ticker.innerText = 'Failed to load prices.';
-        console.error('Error loading prices:', err);
-      }
-    }
-
-    window.onload = () => {
-      loadInvestments();
-      loadPrices();
-      setInterval(loadPrices, 60000); // Update prices every 60 seconds
-    };
-  </script>
+  <!-- JavaScript -->
+  <script src="script.js"></script>
 </body>
 </html>
