@@ -2,39 +2,50 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ChainAsset - Crypto Investment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChainAsset – Smart Crypto Investment</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <header class="hero">
-    <div class="container">
-      <h1>ChainAsset</h1>
-      <p>Invest Smart in Crypto. Track your growth in real time.</p>
-      <a href="#invest" class="cta-btn">Start Investing</a>
+  <header>
+    <nav>
+      <div class="logo">ChainAsset</div>
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#invest">Invest</a></li>
+        <li><a href="#roadmap">Roadmap</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="hero" data-aos="fade-up">
+      <h1>Smart Crypto Investment Platform</h1>
+      <p>Invest in top cryptocurrencies, track growth, and stay ahead of the market.</p>
+      <a href="#invest" class="cta-btn">Get Started</a>
     </div>
   </header>
 
-  <section class="features container">
-    <h2>Why ChainAsset?</h2>
+  <section id="features" class="container" data-aos="fade-up">
+    <h2>Platform Features</h2>
     <div class="grid">
       <div class="card">
-        <h3>Live Prices</h3>
-        <p>Real-time price fetching from trusted APIs.</p>
+        <h3>Real-Time Data</h3>
+        <p>Live crypto prices with fast API response.</p>
       </div>
       <div class="card">
-        <h3>Secure Storage</h3>
-        <p>Investments saved locally for peace of mind.</p>
+        <h3>Secure & Transparent</h3>
+        <p>Simple architecture backed by a reliable backend.</p>
       </div>
       <div class="card">
-        <h3>Clean & Fast UI</h3>
-        <p>Inspired by top investment platforms.</p>
+        <h3>Responsive Design</h3>
+        <p>Optimized for mobile and desktop screens.</p>
       </div>
     </div>
   </section>
 
-  <section class="investment container" id="invest">
+  <section id="invest" class="container" data-aos="fade-up">
     <h2>Make an Investment</h2>
     <div class="form-group">
       <label for="coin">Select Coin</label>
@@ -45,20 +56,46 @@
       </select>
 
       <label for="amount">Amount (USD)</label>
-      <input type="number" id="amount" placeholder="Enter amount in USD" />
+      <input type="number" id="amount" placeholder="Enter amount" />
       <button onclick="invest()">Invest</button>
     </div>
-  </section>
-
-  <section class="container">
-    <h2>Investment History</h2>
     <ul id="investment-list"></ul>
   </section>
 
+  <section id="roadmap" class="container" data-aos="fade-up">
+    <h2>Project Roadmap</h2>
+    <ul class="roadmap">
+      <li><strong>Q3 2025</strong> – MVP Launch & Live Deployment</li>
+      <li><strong>Q4 2025</strong> – Wallet Integration & Charts</li>
+      <li><strong>Q1 2026</strong> – Referral Program & UI Redesign</li>
+    </ul>
+  </section>
+
+  <section id="testimonials" class="container" data-aos="fade-up">
+    <h2>What Users Say</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial">
+        <p>"ChainAsset makes it simple to track crypto without stress. Love it!"</p>
+        <span>- Ada, Lagos</span>
+      </div>
+      <div class="testimonial">
+        <p>"Easy to use, responsive and direct to the point."</p>
+        <span>- Kelvin, Abuja</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="container" data-aos="fade-up">
+    <h2>Contact Us</h2>
+    <p>Email: <a href="mailto:support@chainasset.netlify.app">support@chainasset.netlify.app</a></p>
+  </section>
+
   <footer>
-    <p>&copy; 2025 ChainAsset. Built for crypto investors.</p>
+    <p>&copy; 2025 ChainAsset. All rights reserved.</p>
   </footer>
 
   <script src="script.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
 </body>
 </html>
