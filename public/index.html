@@ -2,62 +2,84 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ChainAsset | Crypto Investment</title>
-
-  <!-- AOS Animation Styles -->
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ChainAsset – Smart Crypto Investments</title>
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <!-- ✅ HERO SECTION -->
-  <section id="hero" class="section" data-aos="fade-up">
-    <h1>Welcome to ChainAsset</h1>
-    <p>Track your crypto investments in real time.</p>
+  <!-- HERO -->
+  <section id="hero" data-aos="fade-up">
+    <h1>ChainAsset</h1>
+    <p>Invest smartly in crypto — track your portfolio, grow with confidence.</p>
+    <a href="#invest" class="btn">Invest Now</a>
   </section>
 
-  <!-- ✅ INVESTMENT FORM -->
-  <section id="invest" class="section" data-aos="fade-up">
+  <!-- FEATURES -->
+  <section id="features" data-aos="fade-up">
+    <div class="feature">
+      <h3>Live Price</h3>
+      <p>Real-time crypto quotes.</p>
+    </div>
+    <div class="feature">
+      <h3>Secure Tracking</h3>
+      <p>Safe investment records.</p>
+    </div>
+    <div class="feature">
+      <h3>Responsive UI</h3>
+      <p>Beautiful on any device.</p>
+    </div>
+  </section>
+
+  <!-- INVEST -->
+  <section id="invest" data-aos="fade-up">
     <h2>Make an Investment</h2>
     <select id="coin">
       <option value="bitcoin">Bitcoin</option>
       <option value="ethereum">Ethereum</option>
       <option value="solana">Solana</option>
     </select>
-    <input type="number" id="amount" placeholder="Amount in USD" />
+    <input id="amount" type="number" placeholder="Amount (USD)"/>
     <button onclick="invest()">Invest</button>
     <ul id="investment-list"></ul>
   </section>
 
-  <!-- ✅ TESTIMONIALS -->
-  <section id="testimonials" class="section" data-aos="fade-up">
-    <h2>What Our Users Say</h2>
-    <div class="testimonial-slider">
-      <div class="testimonial active">"Amazing platform!" – Grace</div>
-      <div class="testimonial">"User-friendly interface!" – Emeka</div>
-      <div class="testimonial">"Helps me stay on top of my investments!" – Ada</div>
-    </div>
+  <!-- ROADMAP -->
+  <section id="roadmap" data-aos="fade-up">
+    <h2>Roadmap</h2>
+    <ul>
+      <li>Q3 2025 – MVP Launch</li>
+      <li>Q4 2025 – Wallet & Charts</li>
+      <li>Q1 2026 – Referrals & UI</li>
+    </ul>
   </section>
 
-  <!-- ✅ CONTACT FORM -->
-  <section id="contact" class="section" data-aos="fade-up">
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" data-aos="fade-up">
+    <h2>Testimonials</h2>
+    <div class="testimonial">“A game changer!” – Ada</div>
+    <div class="testimonial">“Love the simplicity.” – Kelvin</div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" data-aos="fade-up">
     <h2>Contact Us</h2>
-    <form action="https://formspree.io/f/mwpqekgz" method="POST" class="form-container">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-      <button type="submit">Send Message</button>
+    <form action="https://formspree.io/f/mwpqekgz" method="POST">
+      <input name="name" type="text" placeholder="Name" required/>
+      <input name="email" type="email" placeholder="Email" required/>
+      <textarea name="message" placeholder="Your Message" rows="4"></textarea>
+      <button type="submit">Send</button>
     </form>
   </section>
 
-  <!-- ✅ AOS + Custom Scripts -->
+  <footer data-aos="fade-up">
+    <p>© 2025 ChainAsset</p>
+  </footer>
+
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init();
+    AOS.init({ once: true });
   </script>
-
   <script src="script.js"></script>
 </body>
 </html>
