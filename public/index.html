@@ -1,16 +1,113 @@
-async function loadInvestments() {
-  try {
-    const res = await fetch(`${BASE_URL}/api/investments`);
-    const data = await res.json();
-    const list = document.getElementById('investment-list');
-    list.innerHTML = '';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ChainAsset | Crypto Investment Platform</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
 
-    data.forEach(inv => {
-      const li = document.createElement('li');
-      li.innerText = `${inv.coin.toUpperCase()}: $${inv.amount} @ $${inv.priceAtInvestment} on ${new Date(inv.date).toLocaleString()}`;
-      list.appendChild(li);
-    });
-  } catch (err) {
-    console.log('Error loading investments', err);
-  }
-}
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Welcome to ChainAsset</h1>
+    <p>Track your crypto investments in real time</p>
+    <a href="#invest-section" class="cta">Get Started</a>
+  </section>
+
+  <!-- Investment Form Section -->
+  <section id="invest-section" class="investment-section">
+    <h2>Make an Investment</h2>
+
+    <label for="coin">Select Coin:</label>
+    <select id="coin">
+      <option value="bitcoin">Bitcoin</option>
+      <option value="ethereum">Ethereum</option>
+      <option value="solana">Solana</option>
+    </select>
+
+    <label for="amount">Amount (USD):</label>
+    <input type="number" id="amount" placeholder="Enter amount" />
+
+    <button onclick="invest()">Invest</button>
+
+    <h3>Current Investments</h3>
+    <ul id="investment-list"></ul>
+  </section>
+
+  <!-- Features Section (Optional) -->
+  <section class="features">
+    <h2>Platform Features</h2>
+    <div class="feature-grid">
+      <div class="feature-box">
+        <h3>Real-Time Pricing</h3>
+        <p>Live crypto prices fetched from trusted APIs.</p>
+      </div>
+      <div class="feature-box">
+        <h3>Secure Tracking</h3>
+        <p>All your investment records are securely stored.</p>
+      </div>
+      <div class="feature-box">
+        <h3>Multi-Coin Support</h3>
+        <p>Invest in Bitcoin, Ethereum, Solana, and more.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact">
+    <h2>Need Help?</h2>
+    <p>Email: support@chainasset.com</p>
+  </section>
+
+  <!-- JavaScript Logic -->
+  <script>
+    const BASE_URL = 'https://investement-backend.onrender.com';
+
+    async function invest() {
+      const coin = document.getElementById('coin').value;
+      const amount = parseFloat(document.getElementById('amount').value);
+      if (!amount || amount <= 0) {
+        alert('Please enter a valid amount.');
+        return;
+      }
+
+      try {
+        const priceRes = await fetch(`${BASE_URL}/api/price/${coin}`);
+        const priceData = await priceRes.json();
+        const price = priceData[coin].usd;
+
+        await fetch(`${BASE_URL}/api/invest`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ coin, amount, priceAtInvestment: price })
+        });
+
+        loadInvestments();
+      } catch (err) {
+        alert('Error making investment. Please try again.');
+      }
+    }
+
+    async function loadInvestments() {
+      try {
+        const res = await fetch(`${BASE_URL}/api/investments`);
+        const data = await res.json();
+        const list = document.getElementById('investment-list');
+        list.innerHTML = '';
+
+        data.forEach(inv => {
+          const li = document.createElement('li');
+          li.innerText = `${inv.coin.toUpperCase()}: $${inv.amount} @ $${inv.priceAtInvestment} on ${new Date(inv.date).toLocaleString()}`;
+          list.appendChild(li);
+        });
+      } catch (err) {
+        console.log('Error loading investments', err);
+      }
+    }
+
+    window.onload = loadInvestments;
+  </script>
+
+</body>
+</html>
