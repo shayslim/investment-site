@@ -4,70 +4,84 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ChainAsset - Crypto Investment Platform</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <!-- AOS CSS for scroll animation -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- ✅ Live Crypto Ticker -->
-  <div class="crypto-ticker">
-    <span id="btc-price">BTC: Loading...</span>
-    <span id="eth-price">ETH: Loading...</span>
-    <span id="sol-price">SOL: Loading...</span>
-    <span id="xrp-price">XRP: Loading...</span>
-    <span id="usdt-price">USDT: Loading...</span>
-    <span id="bnb-price">BNB: Loading...</span>
-    <span id="doge-price">DOGE: Loading...</span>
-    <span id="trx-price">TRX: Loading...</span>
-    <span id="ada-price">ADA: Loading...</span>
-    <span id="shib-price">SHIB: Loading...</span>
-    <span id="link-price">LINK: Loading...</span>
+  <!-- Crypto Ticker -->
+  <div class="crypto-ticker" id="ticker">
+    <span>Loading prices...</span>
   </div>
 
-  <!-- ✅ Main Content -->
   <main>
-    <h1>Welcome to ChainAsset</h1>
+    <h1 data-aos="fade-down">Welcome to ChainAsset</h1>
 
-    <div class="form-section">
+    <!-- Investment Form -->
+    <section class="investment-form" data-aos="fade-up">
+      <h2>Invest in Crypto</h2>
       <label for="coin">Select Coin:</label>
       <select id="coin">
         <option value="bitcoin">Bitcoin</option>
         <option value="ethereum">Ethereum</option>
         <option value="solana">Solana</option>
+        <option value="ripple">XRP</option>
+        <option value="tether">Tether</option>
+        <option value="binancecoin">BNB</option>
+        <option value="dogecoin">Dogecoin</option>
+        <option value="tron">Tron</option>
+        <option value="cardano">Cardano</option>
+        <option value="shiba-inu">SHIBA</option>
+        <option value="chainlink">Chainlink</option>
       </select>
 
       <label for="amount">Amount (USD):</label>
-      <input type="number" id="amount" placeholder="Enter amount" />
+      <input type="number" id="amount" />
       <button onclick="invest()">Invest</button>
-    </div>
+    </section>
 
-    <h2>Your Investments</h2>
-    <ul id="investment-list"></ul>
+    <!-- Investment List -->
+    <section class="investments" data-aos="fade-up">
+      <h2>Current Investments</h2>
+      <ul id="investment-list"></ul>
+    </section>
+
+    <!-- Roadmap -->
+    <section class="roadmap" data-aos="fade-up">
+      <h2>Roadmap</h2>
+      <ul>
+        <li><strong>Q1:</strong> Platform Launch</li>
+        <li><strong>Q2:</strong> Wallet Integration</li>
+        <li><strong>Q3:</strong> Mobile App Development</li>
+        <li><strong>Q4:</strong> Token Launch</li>
+      </ul>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" data-aos="zoom-in">
+      <h2>What Users Are Saying</h2>
+      <div class="testimonial">
+        <p>"This platform made investing in crypto simple and safe."</p>
+        <span>- Ada O., Nigeria</span>
+      </div>
+      <div class="testimonial">
+        <p>"Clean interface and transparent performance tracking!"</p>
+        <span>- Musa T., Ghana</span>
+      </div>
+    </section>
   </main>
 
-  <!-- ✅ Script -->
+  <!-- AOS Script -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init();</script>
+
+  <!-- Custom Script -->
   <script>
     const BASE_URL = 'https://investement-backend.onrender.com';
-
-    async function updateCryptoPrices() {
-      try {
-        const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,ripple,tether,binancecoin,dogecoin,tron,cardano,shiba-inu,chainlink&vs_currencies=usd');
-        const data = await res.json();
-
-        document.getElementById('btc-price').innerText = `BTC: $${data.bitcoin.usd}`;
-        document.getElementById('eth-price').innerText = `ETH: $${data.ethereum.usd}`;
-        document.getElementById('sol-price').innerText = `SOL: $${data.solana.usd}`;
-        document.getElementById('xrp-price').innerText = `XRP: $${data.ripple.usd}`;
-        document.getElementById('usdt-price').innerText = `USDT: $${data.tether.usd}`;
-        document.getElementById('bnb-price').innerText = `BNB: $${data.binancecoin.usd}`;
-        document.getElementById('doge-price').innerText = `DOGE: $${data.dogecoin.usd}`;
-        document.getElementById('trx-price').innerText = `TRX: $${data.tron.usd}`;
-        document.getElementById('ada-price').innerText = `ADA: $${data.cardano.usd}`;
-        document.getElementById('shib-price').innerText = `SHIB: $${data['shiba-inu'].usd}`;
-        document.getElementById('link-price').innerText = `LINK: $${data.chainlink.usd}`;
-      } catch (err) {
-        console.error('Error fetching crypto prices:', err);
-      }
-    }
 
     async function invest() {
       const coin = document.getElementById('coin').value;
@@ -112,11 +126,9 @@
       }
     }
 
-    // Load data on page load and update prices every 60s
+    // Load investments on page load
     window.onload = () => {
-      updateCryptoPrices();
       loadInvestments();
-      setInterval(updateCryptoPrices, 60000);
     };
   </script>
 </body>
