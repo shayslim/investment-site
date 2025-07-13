@@ -2,107 +2,96 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Chain Assets | Crypto Investment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChainAsset - Crypto Investment</title>
+
+  <!-- AOS Animation Library -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+
+  <!-- Custom Styles -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- Top Crypto Price Ticker -->
-  <div class="price-ticker" id="price-ticker">Loading prices...</div>
+  <!-- Crypto Ticker -->
+  <div class="crypto-ticker" id="crypto-ticker" data-aos="fade-down">
+    Loading prices...
+  </div>
 
   <!-- Navigation -->
-  <header>
-    <div class="container nav">
-      <h1 class="logo">ChainAssets</h1>
-      <nav>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#invest">Invest</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <nav class="navbar" data-aos="fade-down">
+    <h1>ChainAsset</h1>
+    <ul>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#invest">Invest</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
   <!-- Hero Section -->
-  <section class="hero">
-    <div class="container">
-      <h2>Invest Smarter with Crypto</h2>
-      <p>Secure. Fast. Transparent. Grow your crypto portfolio with confidence.</p>
-      <a href="#invest" class="btn">Get Started</a>
-    </div>
+  <section id="hero" data-aos="fade-up">
+    <h2>Invest Smarter with Crypto</h2>
+    <p>Track your crypto investments with real-time prices and detailed history.</p>
   </section>
 
   <!-- Features Section -->
-  <section class="features" id="features">
-    <div class="container">
-      <h2>Platform Features</h2>
-      <div class="features-grid">
-        <div class="feature-box">
-          <h3>Real-Time Pricing</h3>
-          <p>Stay up to date with live crypto prices.</p>
-        </div>
-        <div class="feature-box">
-          <h3>Secure Investments</h3>
-          <p>Bank-grade security to protect your assets.</p>
-        </div>
-        <div class="feature-box">
-          <h3>Instant Tracking</h3>
-          <p>Track your portfolio in real-time.</p>
-        </div>
-      </div>
-    </div>
+  <section id="features" data-aos="fade-right">
+    <h2>Features</h2>
+    <ul>
+      <li>Real-time Crypto Prices</li>
+      <li>Secure Backend API</li>
+      <li>Responsive Design</li>
+      <li>Fast Deployment</li>
+    </ul>
   </section>
 
-  <!-- Investment Section -->
-  <section class="invest" id="invest">
-    <div class="container">
-      <h2>Make an Investment</h2>
-      <div class="form-wrapper">
-        <label for="coin">Select Coin:</label>
-        <select id="coin">
-          <option value="bitcoin">Bitcoin</option>
-          <option value="ethereum">Ethereum</option>
-          <option value="solana">Solana</option>
-          <option value="ripple">XRP</option>
-          <option value="tether">Tether</option>
-          <option value="binancecoin">BNB</option>
-          <option value="dogecoin">Dogecoin</option>
-          <option value="tron">Tron</option>
-          <option value="cardano">Cardano</option>
-          <option value="shiba-inu">SHIBA</option>
-          <option value="chainlink">Chainlink</option>
-        </select>
+  <!-- Investment Form -->
+  <section id="invest" data-aos="zoom-in">
+    <h2>Make an Investment</h2>
 
-        <label for="amount">Amount (USD):</label>
-        <input type="number" id="amount" placeholder="Enter amount in USD" />
+    <label for="coin">Select Coin:</label>
+    <select id="coin">
+      <option value="bitcoin">Bitcoin</option>
+      <option value="ethereum">Ethereum</option>
+      <option value="solana">Solana</option>
+      <option value="xrp">XRP</option>
+      <option value="tether">Tether</option>
+      <option value="bnb">BNB</option>
+      <option value="dogecoin">Dogecoin</option>
+      <option value="tron">Tron</option>
+      <option value="cardano">Cardano</option>
+      <option value="shiba-inu">SHIBA</option>
+      <option value="chainlink">Chainlink</option>
+    </select>
 
-        <button onclick="invest()">Invest</button>
-      </div>
+    <label for="amount">Amount (USD):</label>
+    <input type="number" id="amount" placeholder="Enter amount" />
 
-      <h3>Investment History</h3>
-      <ul id="investment-list" class="investment-list"></ul>
-    </div>
+    <button onclick="invest()">Invest</button>
+  </section>
+
+  <!-- Investment History -->
+  <section id="history" data-aos="fade-left">
+    <h2>Investment History</h2>
+    <ul id="investment-list"></ul>
   </section>
 
   <!-- Contact Section -->
-  <section class="contact" id="contact">
-    <div class="container">
-      <h2>Contact Us</h2>
-      <p>Email: <a href="mailto:support@chainassets.com">support@chainassets.com</a></p>
-    </div>
+  <section id="contact" data-aos="fade-up">
+    <h2>Contact Us</h2>
+    <p>Email: support@chainasset.net</p>
+    <p>Twitter: @chainasset</p>
   </section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 ChainAssets. All rights reserved.</p>
-    </div>
-  </footer>
+  <!-- AOS JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 
-  <!-- JavaScript -->
+  <!-- Main Script -->
   <script src="script.js"></script>
+
 </body>
 </html>
